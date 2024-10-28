@@ -41,7 +41,7 @@ class AnalistaFinanceiroCrew():
 		return Task(
 			config=self.tasks_config['obter_preco'],
 			agent=self.analista_precos(),
-			async_execution=True
+			output_file='analise.md'
 		)
 
 	@task
@@ -49,7 +49,7 @@ class AnalistaFinanceiroCrew():
 		return Task(
 			config=self.tasks_config['obter_noticias'],
 			agent=self.analista_noticias(),
-			async_execution=True
+			output_file='noticias.md'
 		)
 	
 	@task
@@ -57,8 +57,8 @@ class AnalistaFinanceiroCrew():
 		return Task(
 			config=self.tasks_config['escrever_relatorio'],
 			agent=self.escritor_relatorio(),
-			context=[obter_preco, obter_noticias],
-			output_file='analise.md'
+			context=[self.obter_preco(), self.obter_noticias()],
+			output_file='relatorio.md'
 		)
 
 	@crew

@@ -14,14 +14,16 @@ obter_preco:
 
 obter_noticias:
   description: >
-    Buscar as notícias mais recentes e relevantes relacionadas ao mercado de ações, com foco principal no ticket {ticket}, utilizando a ferramenta de pesquisa. 
+    Buscar as notícias mais recentes e relevantes relacionadas ao mercado de ações, com foco principal no ticket {ticker}, utilizando a ferramenta de pesquisa. 
     Priorize a identificação de artigos que possam impactar os preços das ações, como anúncios de resultados financeiros, mudanças na liderança, tensões geopolíticas, relatórios econômicos, e outras informações significativas para o mercado. 
-    Certifique-se de incluir menções a BTC, mesmo que não tenham sido especificamente solicitadas. Considere a data atual como {current_date}.
+    Certifique-se de incluir menções a BTC, mesmo que não tenham sido especificamente solicitadas. 
   expected_output: >
     Um relatório detalhado e informativo sobre as notícias relevantes para o mercado de ações, contendo o título de cada notícia, a fonte e um resumo explicando como cada notícia pode influenciar o mercado.
     O agente deve também avaliar o impacto potencial de cada notícia em uma escala de 0 a 100, onde 0 representa um impacto extremamente negativo e 100 um impacto extremamente positivo para o ativo analisado.
     O relatório deve seguir a estrutura abaixo:
     # Ação Avaliada
+    ## Informações sobre a Empresa 
+    (Nome e descrição da empresa, Setor e indústria, Localização (endereço da sede), Funcionários e executivos principais.)
     ## Relatório da Ação com Base nas Notícias
     ## Previsão de Tendência
     ### Pontuação de Impacto (Negativo/Positivo)
@@ -35,7 +37,7 @@ escrever_relatorio:
     O boletim deve ser escrito em português do Brasil.
   expected_output: >
     Um boletim informativo conciso e informativo sobre a empresa {ticker}, destacando as tendências do preço das ações, as principais notícias e o índice de medo/ganância.
-    O relatório deve incluir também considerações para o futuro próximo, fornecendo uma visão clara dos possíveis cenários, além de um resumo das análises anteriores das tendências de ações e das notícias relevantes.
+    O relatório deve incluir também considerações para o futuro próximo, fornecendo uma visão clara dos possíveis cenários, além de um resumo das análises anteriores das tendências de ações.
     O resultado final deve ser salvo em um arquivo no formato Markdown.
   agent: escritor_relatorio
   output_file: analise.md
