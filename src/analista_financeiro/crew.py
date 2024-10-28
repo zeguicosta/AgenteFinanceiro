@@ -5,7 +5,7 @@ from crewai.project import CrewBase, agent, crew, task
 from analista_financeiro.tools.custom_tool import AnaliseFinanceira
 
 # Check our tools documentations for more information on how to use them
-# from crewai_tools import SerperDevTool
+from crewai_tools import SerperDevTool
 
 @CrewBase
 class AnalistaFinanceiroCrew():
@@ -17,16 +17,17 @@ class AnalistaFinanceiroCrew():
 	def analista_precos(self) -> Agent:
 		return Agent(
 			config=self.agents_config['analista_precos'],
-			tools=[AnaliseFinanceira()], # Example of custom tool, loaded on the beginning of file
+			tools=[AnaliseFinanceira(result_as_answer=True)], # Example of custom tool, loaded on the beginning of file
 			verbose=True
 		)
 
-	# @agent
-	# def analista_noticias(self) -> Agent:
-	# 	return Agent(
-	# 		config=self.agents_config['analista_noticias'],
-	# 		verbose=True
-	# 	)
+	@agent
+	def analista_noticias(self) -> Agent:
+		return Agent(
+			config=self.agents_config['analista_noticias'],
+			tools=[SerperDevTool()],
+			verbose=True
+		)
 	
 	@agent
 	def escritor_relatorio(self) -> Agent:
@@ -39,21 +40,24 @@ class AnalistaFinanceiroCrew():
 	def obter_preco(self) -> Task:
 		return Task(
 			config=self.tasks_config['obter_preco'],
-			agent=self.analista_precos()
+			agent=self.analista_precos(),
+			async_execution=True
 		)
 
-	# @task
-	# def obter_noticias(self) -> Task:
-	# 	return Task(
-	# 		config=self.tasks_config['obter_noticias'],
-	# 		agent=self.analista_noticias(),
-	# 	)
+	@task
+	def obter_noticias(self) -> Task:
+		return Task(
+			config=self.tasks_config['obter_noticias'],
+			agent=self.analista_noticias(),
+			async_execution=True
+		)
 	
 	@task
 	def escrever_relatorio(self) -> Task:
 		return Task(
 			config=self.tasks_config['escrever_relatorio'],
 			agent=self.escritor_relatorio(),
+			context=[obter_preco, obter_noticias],
 			output_file='analise.md'
 		)
 

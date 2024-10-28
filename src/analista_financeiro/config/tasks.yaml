@@ -12,20 +12,20 @@ obter_preco:
     análises financeiras detalhadas, garantindo que os dados estejam prontos para uso imediato.
   agent: analista_precos
 
-# obter_noticias:
-#   description: >
-#     Buscar as notícias mais recentes e relevantes relacionadas ao mercado de ações, com foco principal no ticket {ticket}, utilizando a ferramenta de pesquisa. 
-#     Priorize a identificação de artigos que possam impactar os preços das ações, como anúncios de resultados financeiros, mudanças na liderança, tensões geopolíticas, relatórios econômicos, e outras informações significativas para o mercado. 
-#     Certifique-se de incluir menções a BTC, mesmo que não tenham sido especificamente solicitadas. Considere a data atual como {current_date}.
-#   expected_output: >
-#     Um relatório detalhado e informativo sobre as notícias relevantes para o mercado de ações, contendo o título de cada notícia, a fonte e um resumo explicando como cada notícia pode influenciar o mercado.
-#     O agente deve também avaliar o impacto potencial de cada notícia em uma escala de 0 a 100, onde 0 representa um impacto extremamente negativo e 100 um impacto extremamente positivo para o ativo analisado.
-#     O relatório deve seguir a estrutura abaixo:
-#     # Ação Avaliada
-#     ## Relatório da Ação com Base nas Notícias
-#     ## Previsão de Tendência
-#     ### Pontuação de Impacto (Negativo/Positivo)
-#   agent: analista_noticias
+obter_noticias:
+  description: >
+    Buscar as notícias mais recentes e relevantes relacionadas ao mercado de ações, com foco principal no ticket {ticket}, utilizando a ferramenta de pesquisa. 
+    Priorize a identificação de artigos que possam impactar os preços das ações, como anúncios de resultados financeiros, mudanças na liderança, tensões geopolíticas, relatórios econômicos, e outras informações significativas para o mercado. 
+    Certifique-se de incluir menções a BTC, mesmo que não tenham sido especificamente solicitadas. Considere a data atual como {current_date}.
+  expected_output: >
+    Um relatório detalhado e informativo sobre as notícias relevantes para o mercado de ações, contendo o título de cada notícia, a fonte e um resumo explicando como cada notícia pode influenciar o mercado.
+    O agente deve também avaliar o impacto potencial de cada notícia em uma escala de 0 a 100, onde 0 representa um impacto extremamente negativo e 100 um impacto extremamente positivo para o ativo analisado.
+    O relatório deve seguir a estrutura abaixo:
+    # Ação Avaliada
+    ## Relatório da Ação com Base nas Notícias
+    ## Previsão de Tendência
+    ### Pontuação de Impacto (Negativo/Positivo)
+  agent: analista_noticias
 
 escrever_relatorio:
   description: >
