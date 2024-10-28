@@ -1,0 +1,41 @@
+obter_preco:
+  description: >
+    Sua tarefa é buscar os dados históricos de preços da ação especificada pela empresa {ticker} 
+    utilizando a ferramenta Yahoo Finance Tool. A análise deve abranger um período de um ano, 
+    começando exatamente um ano antes da data atual e indo até o presente. O resultado deve incluir 
+    informações detalhadas, como preço de abertura, preço de fechamento, volume de negociações, 
+    e outros dados relevantes para uma análise completa do desempenho da ação ao longo desse período.
+  expected_output: >
+    Um DataFrame contendo os dados históricos de preços da ação referente à empresa {ticker},
+    incluindo colunas para data, preço de abertura, preço de fechamento, volume de negociações,
+    e outros indicadores relevantes. O DataFrame deve ser formatado de maneira adequada para
+    análises financeiras detalhadas, garantindo que os dados estejam prontos para uso imediato.
+  agent: analista_precos
+
+# obter_noticias:
+#   description: >
+#     Buscar as notícias mais recentes e relevantes relacionadas ao mercado de ações, com foco principal no ticket {ticket}, utilizando a ferramenta de pesquisa. 
+#     Priorize a identificação de artigos que possam impactar os preços das ações, como anúncios de resultados financeiros, mudanças na liderança, tensões geopolíticas, relatórios econômicos, e outras informações significativas para o mercado. 
+#     Certifique-se de incluir menções a BTC, mesmo que não tenham sido especificamente solicitadas. Considere a data atual como {current_date}.
+#   expected_output: >
+#     Um relatório detalhado e informativo sobre as notícias relevantes para o mercado de ações, contendo o título de cada notícia, a fonte e um resumo explicando como cada notícia pode influenciar o mercado.
+#     O agente deve também avaliar o impacto potencial de cada notícia em uma escala de 0 a 100, onde 0 representa um impacto extremamente negativo e 100 um impacto extremamente positivo para o ativo analisado.
+#     O relatório deve seguir a estrutura abaixo:
+#     # Ação Avaliada
+#     ## Relatório da Ação com Base nas Notícias
+#     ## Previsão de Tendência
+#     ### Pontuação de Impacto (Negativo/Positivo)
+#   agent: analista_noticias
+
+escrever_relatorio:
+  description: >
+    Utilize a tendência do preço das ações e o relatório de notícias do mercado para elaborar uma análise e redigir um boletim informativo sobre a empresa {ticker}.
+    O relatório deve ser conciso, destacando os pontos mais relevantes, com ênfase na tendência do preço das ações, nas notícias recentes e no índice de medo/ganância.
+    Inclua considerações para o futuro próximo, apresentando uma visão clara sobre possíveis cenários. Não se esqueça de incorporar as análises anteriores das tendências das ações e o resumo das principais notícias.
+    O boletim deve ser escrito em português do Brasil.
+  expected_output: >
+    Um boletim informativo conciso e informativo sobre a empresa {ticker}, destacando as tendências do preço das ações, as principais notícias e o índice de medo/ganância.
+    O relatório deve incluir também considerações para o futuro próximo, fornecendo uma visão clara dos possíveis cenários, além de um resumo das análises anteriores das tendências de ações e das notícias relevantes.
+    O resultado final deve ser salvo em um arquivo no formato Markdown.
+  agent: escritor_relatorio
+  output_file: analise.md
